@@ -15,7 +15,7 @@ function FrontendHeader() {
                         </div>
                         <div className="top-header-right">
                             <ul>
-                                <li><a href="#">login</a></li>
+                                <li><Link to="/login">login</Link></li>
                                 <li><a href="#">register</a></li>
                             </ul>
                         </div>

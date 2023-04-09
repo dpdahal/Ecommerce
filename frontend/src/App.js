@@ -4,12 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./scss/Frontend.scss";
+import "./scss/Backend.scss";
 
 function App() {
+
+
     return (
-        <React.Fragment>
+        <div className="App">
             <WebRouter/>
-        </React.Fragment>
+        </div>
     );
 }
 

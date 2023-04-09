@@ -8,8 +8,12 @@ class UserController {
     }
 
     async store(req, res) {
-        const user = await User.create(req.body);
-        return res.json(user);
+        try {
+            const user = await User.create(req.body);
+            return res.json(user);
+        } catch (e) {
+            return res.status(400).json({error: e.message});
+        }
     }
 
 }
