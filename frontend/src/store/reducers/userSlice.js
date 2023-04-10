@@ -9,7 +9,7 @@ export const userSliceApi = createApi({
         }),
         addUser: builder.mutation({
             query: (body) => ({
-                url: 'user',
+                url: '/user',
                 method: 'POST',
                 body,
             })

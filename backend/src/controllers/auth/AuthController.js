@@ -7,7 +7,6 @@ class AuthController {
         const token = req.headers.authorization;
         if (token) {
             let response = Auth.verifyToken(token);
-            console.log(response)
             if (response) {
                 let user = await User.findOne({_id: response.id});
                 res.status(200).json({

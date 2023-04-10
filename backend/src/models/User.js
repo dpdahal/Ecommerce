@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
     },
 
     courses: {
-        type: String,
+        type: [String],
         required: true
     },
     country: {
