@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import webRouter from "./router/index.js";
 import connection from "./config/connection.js";
+import Seeder  from "./seeder/index.js";
 
 dotenv.config();
 
@@ -23,6 +24,8 @@ connection().then((res) => {
 }).catch((err) => {
     console.log(err.message)
 });
+
+new Seeder().run();
 
 app.use("/", webRouter);
 

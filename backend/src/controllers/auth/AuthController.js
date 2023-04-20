@@ -34,8 +34,10 @@ class AuthController {
         if (token) {
             let response = Auth.verifyToken(token);
             if (response) {
+                let user = await User.findOne({_id: response.id});
                 res.status(200).json({
-                    success: true
+                    success: true,
+                    user: user
                 });
 
             } else {

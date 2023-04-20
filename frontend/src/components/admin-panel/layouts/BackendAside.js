@@ -1,5 +1,6 @@
 import React from "react";
 import {useGetLoginUserQuery} from "../../../store/reducers/authSlice";
+import {Link} from "react-router-dom";
 
 function BackendAside() {
     let token = localStorage.getItem('token') ?? '';
@@ -20,10 +21,16 @@ function BackendAside() {
                         </div>
                         <ul className="nav flex-column">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">
+                                <Link to={"/admin"} className="nav-link active" aria-current="page">
                                     <span data-feather="home" className="align-text-bottom"/>
                                     Dashboard
-                                </a>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={'/users'} className="nav-link active" aria-current="page">
+                                    <span data-feather="home" className="align-text-bottom"/>
+                                    Users
+                                </Link>
                             </li>
 
                         </ul>

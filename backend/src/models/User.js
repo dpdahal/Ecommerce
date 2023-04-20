@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
 
-    courses: {
+    language: {
         type: [String],
         required: true
     },

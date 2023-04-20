@@ -9,6 +9,8 @@ import RouteMiddleware from "../components/middleware/RouteMiddleware";
 import RegisterComponents from "../components/pages/auth/RegisterComponents";
 import PasswordReset from "../components/pages/auth/PasswordReset";
 import PasswordResetConfirm from "../components/pages/auth/PasswordResetConfirm";
+import UsersComponents from "../components/admin-panel/pages/users/UsersComponents";
+import RoleMiddleware from "../components/middleware/RoleMiddleware";
 
 function WebRouter() {
     return (
@@ -23,6 +25,10 @@ function WebRouter() {
 
             <Route element={<RouteMiddleware/>}>
                 <Route path="/admin" element={<DashboardComponents/>}/>
+                <Route element={<RoleMiddleware/>}>
+                    <Route path="/users" element={<UsersComponents/>}/>
+                </Route>
+
             </Route>
 
             <Route path="*" element={<PageNotFound/>}/>

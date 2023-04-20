@@ -16,7 +16,7 @@ let registerSchema = yup.object().shape({
     password: yup.string().required(),
     password_confirmation: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match'),
     gender: yup.string().required(),
-    course: yup.array().required(),
+    language: yup.array().required(),
     country: yup.string().required(),
 });
 
@@ -35,7 +35,7 @@ function RegisterComponents() {
         sendData.append('email', data.email);
         sendData.append('password', data.password);
         sendData.append('gender', data.gender)
-        sendData.append('courses', data.course)
+        sendData.append('language', data.language)
         sendData.append('country', data.country)
         sendData.append('image', data.image)
 
@@ -157,14 +157,14 @@ function RegisterComponents() {
                             </div>
                             <div className="col-md-6">
                                 <div className="form-group mb-3">
-                                    <label>Course</label>
-                                    {errors.course && <a style={pStyle}>{errors.course.message}</a>}<br/>
-                                    <label> <input type="checkbox" name="course"
-                                                   value="nodejs"  {...register("course")} /> Nodejs </label>
-                                    <label> <input type="checkbox" name="course"
-                                                   value="python" {...register("course")} /> Python </label>
-                                    <label> <input type="checkbox" name="course"
-                                                   value="java"{...register("course")} /> Java </label>
+                                    <label>Language</label>
+                                    {errors.language && <a style={pStyle}>{errors.language.message}</a>}<br/>
+                                    <label> <input type="checkbox" name="language"
+                                                   value="nepali"  {...register("language")} /> Nepali </label>
+                                    <label> <input type="checkbox" name="language"
+                                                   value="chinese" {...register("language")} /> Chinese </label>
+                                    <label> <input type="checkbox" name="language"
+                                                   value="hindi" {...register("language")} /> Hindi </label>
                                 </div>
                             </div>
                             <div className="col-md-6">

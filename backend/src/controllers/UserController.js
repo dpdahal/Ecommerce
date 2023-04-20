@@ -4,13 +4,13 @@ import Auth from "../middleware/Auth.js";
 class UserController {
 
     async index(req, res) {
+
         const token = req.headers.authorization;
         if (token) {
             let response = Auth.verifyToken(token);
             if (response) {
                 const users = await User.find();
                 return res.json(users);
-
             } else {
                 res.status(200).json({
                     error: "Token is not valid"

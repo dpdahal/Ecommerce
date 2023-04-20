@@ -1,0 +1,90 @@
+import React, {useEffect} from "react";
+import BackendHeader from "../../layouts/BackendHeader";
+import BackendAside from "../../layouts/BackendAside";
+import {useGetUserQuery} from "../../../../store/reducers/userSlice";
+
+
+function UsersComponents() {
+    let token = localStorage.getItem('token') ?? '';
+    let [users, setUsers] = React.useState([]);
+    let {data, isLoading} = useGetUserQuery(token);
+
+    let getAllUsers = () => {
+        setUsers(data);
+    }
+
+    useEffect(() => {
+        getAllUsers();
+    }, [data]);
+
+    console.log(users)
+
+    if (isLoading) {
+        return (
+            <React.Fragment>
+                <BackendHeader/>
+                <BackendAside/>
+                <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <h1>Loading...</h1>
+                </main>
+            </React.Fragment>
+        )
+    }
+
+    return (
+        <React.Fragment>
+            <BackendHeader/>
+            <BackendAside/>
+            <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 className="h2">Users List</h1>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <table className="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">S.n</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Role</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                users && users.map((user, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <th scope="row">{index + 1}</th>
+                                            <td>{user.name}</td>
+                                            <td>{user.username}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.gender}</td>
+                                            <td>{user.language}</td>
+                                            <td>{user.country}</td>
+                                            <td>{user.role}</td>
+                                           
+                                        </tr>
+                                    )
+                                })
+                            }
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </React.Fragment>
+    )
+
+
+}
+
+export default UsersComponents;

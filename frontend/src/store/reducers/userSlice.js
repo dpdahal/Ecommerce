@@ -5,7 +5,14 @@ export const userSliceApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/'}),
     endpoints: (builder) => ({
         getUser: builder.query({
-            query: () => 'user',
+            query: (token) => ({
+                url: '/user',
+                method: 'GET',
+                headers: {
+                    authorization: token,
+                }
+            }),
+
         }),
         addUser: builder.mutation({
             query: (body) => ({
