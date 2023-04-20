@@ -7,6 +7,8 @@ import LoginComponents from "../components/pages/auth/LoginComponents";
 import DashboardComponents from "../components/admin-panel/pages/dashboard/DashboardComponents";
 import RouteMiddleware from "../components/middleware/RouteMiddleware";
 import RegisterComponents from "../components/pages/auth/RegisterComponents";
+import PasswordReset from "../components/pages/auth/PasswordReset";
+import PasswordResetConfirm from "../components/pages/auth/PasswordResetConfirm";
 
 function WebRouter() {
     return (
@@ -15,6 +17,9 @@ function WebRouter() {
             <Route path="/about" element={<AboutComponents/>}/>
             <Route path="/login" element={<LoginComponents/>}/>
             <Route path="/register" element={<RegisterComponents/>}/>
+            <Route path="/password-reset" element={<PasswordReset/>}/>
+            <Route path="/reset-confirm/:token" element={<PasswordResetConfirm/>}/>
+
 
             <Route element={<RouteMiddleware/>}>
                 <Route path="/admin" element={<DashboardComponents/>}/>

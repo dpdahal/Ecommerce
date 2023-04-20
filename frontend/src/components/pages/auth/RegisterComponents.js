@@ -29,7 +29,6 @@ function RegisterComponents() {
     }
     let [createUser] = useAddUserMutation();
     let registerNewAccount = (data) => {
-        console.log(data.course)
         let sendData = new FormData();
         sendData.append('name', data.name);
         sendData.append('username', data.username);

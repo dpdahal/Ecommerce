@@ -9,5 +9,7 @@ let authController = new AuthController();
 authRouter.get("/", authController.getAuthUser);
 authRouter.get('/login-user', authController.getLoginUser)
 authRouter.post("/", aInstance.login);
+authRouter.post('/reset-password', aInstance.resetPassword);
+authRouter.post('/reset-password-confirm', aInstance.resetPasswordConfirm);
 
 export default authRouter;

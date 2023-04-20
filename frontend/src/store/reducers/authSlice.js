@@ -30,6 +30,20 @@ export const authSliceApi = createApi({
                 method: 'POST',
                 body,
             })
+        }),
+        resetPassword: build.mutation({
+            query: (body) => ({
+                url: 'auth/reset-password',
+                method: 'POST',
+                body,
+            })
+        }),
+        resetPasswordConfirm: build.mutation({
+            query: (body) => ({
+                url: 'auth/reset-password-confirm',
+                method: 'POST',
+                body,
+            })
         })
     })
 });
@@ -37,5 +51,7 @@ export const authSliceApi = createApi({
 export const {
     useGetLoginCheckQuery,
     useGetLoginUserQuery,
-    useLoginUserMutation
+    useLoginUserMutation,
+    useResetPasswordMutation,
+    useResetPasswordConfirmMutation,
 } = authSliceApi;

@@ -8,6 +8,7 @@ import {useLoginUserMutation} from "../../../store/reducers/authSlice";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 
 let loginSchema = yup.object().shape({
     username: yup.string().required(),
@@ -42,18 +43,6 @@ function LoginComponents() {
         }).catch((error) => {
             console.log(error);
         });
-        // axios.post("http://localhost:8000/auth", data).then((response) => {
-        //     if (response.data.success) {
-        //         localStorage.setItem("token", response.data.token);
-        //         localStorage.setItem("user", JSON.stringify(response.data.user));
-        //         window.location.href = "/admin";
-        //     } else {
-        //         alert(response.data.error);
-        //
-        //     }
-        // }).catch((error) => {
-        //     console.log(error);
-        // });
 
     }
 
@@ -86,6 +75,7 @@ function LoginComponents() {
                             </div>
                             <div className="form-group mb-4">
                                 <input type="submit" value="Login" className="btn btn-primary"/>
+                                <Link to={"/password-reset"} className="btn btn-danger float-end">Forgot Password</Link>
                             </div>
                         </form>
                     </div>
