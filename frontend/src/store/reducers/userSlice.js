@@ -14,14 +14,34 @@ export const userSliceApi = createApi({
             }),
 
         }),
+        getById: builder.query({
+            query: (id) => ({
+                url: `/user/${id}`,
+                method: 'GET',
+            }),
+        }),
         addUser: builder.mutation({
             query: (body) => ({
                 url: '/user',
                 method: 'POST',
                 body,
             })
+        }),
+
+        updateUser: builder.mutation({
+            query: (body) => ({
+                url: `/user/${body.get('id')}`,
+                method: 'PUT',
+                body,
+
+            })
         })
     }),
 });
-export const {useGetUserQuery, useAddUserMutation} = userSliceApi;
+export const {
+    useGetUserQuery,
+    useGetByIdQuery,
+    useAddUserMutation,
+    useUpdateUserMutation,
+} = userSliceApi;
 

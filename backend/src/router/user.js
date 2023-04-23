@@ -10,5 +10,6 @@ let userInstance = new UserController();
 
 userRouter.get("/", userInstance.index);
 userRouter.post("/", upload.single('image'), userInstance.store);
-
+userRouter.get("/:id", userInstance.show);
+userRouter.put("/:id", upload.single('image'), userInstance.update);
 export default userRouter;

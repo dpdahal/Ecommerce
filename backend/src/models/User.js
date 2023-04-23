@@ -76,20 +76,20 @@ UserSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 }
 
+
+
 UserSchema.methods.getSignedJwtToken = function () {
     return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN
     });
 }
-// compare token from header with token from database
-
-UserSchema.methods.getResetPasswordToken = function () {
-
-}
 
 
 UserSchema.methods.toJSON = function () {
     let obj = this.toObject();
+    if (obj.image) {
+        obj.image = process.env.BASE_URL + "/uploads/users/" + obj.image;
+    }
     delete obj.password;
     return obj;
 }

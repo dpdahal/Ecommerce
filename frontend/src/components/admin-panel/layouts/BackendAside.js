@@ -12,8 +12,16 @@ function BackendAside() {
                     <div className="position-sticky pt-3 sidebar-sticky">
                         <div className="test">
                             <div className="d-flex flex-column align-items-center text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                     className="rounded-circle" width={80}/>
+                                {data.user.image ?
+                                    <div>
+                                        <img src={data.user.image} width="80" className="rounded-circle" alt="image not found"/>
+                                    </div> :
+                                    <div>
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                             className="rounded-circle" width={80}/>
+                                    </div>
+                                }
+
                                 <div className="mt-3">
                                     <h4>{data.user.name}</h4>
                                 </div>
@@ -30,6 +38,13 @@ function BackendAside() {
                                 <Link to={'/users'} className="nav-link active" aria-current="page">
                                     <span data-feather="home" className="align-text-bottom"/>
                                     Users
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={`/update-profile/${data.user._id}`} className="nav-link active"
+                                      aria-current="page">
+                                    <span data-feather="home" className="align-text-bottom"/>
+                                    Update Profile
                                 </Link>
                             </li>
 

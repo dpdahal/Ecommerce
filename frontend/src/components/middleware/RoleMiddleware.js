@@ -5,7 +5,6 @@ function RoleMiddleware() {
     let token = localStorage.getItem('token') ?? '';
     let {data, isLoading} = useGetLoginCheckQuery(token);
     if (!isLoading) {
-        console.log(data.user.role)
         if (data.user.role !== 'admin') {
             window.location.href = "/admin";
         }

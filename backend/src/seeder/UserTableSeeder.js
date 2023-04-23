@@ -16,11 +16,11 @@ class UserTableSeeder {
                 "country": 'nepal'
             },
             {
-                "name": 'user',
-                "username": 'user',
-                "email": 'user@gamil.com',
-                "gender": 'male',
-                "password": 'user002',
+                "name": 'sophia',
+                "username": 'sophia',
+                "email": 'sophia@gamil.com',
+                "gender": 'female',
+                "password": 'sophia',
                 "role": 'user',
                 "status": 'active',
                 "language": ['nepali', 'hindi', 'chinese'],

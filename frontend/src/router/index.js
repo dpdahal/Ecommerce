@@ -11,6 +11,7 @@ import PasswordReset from "../components/pages/auth/PasswordReset";
 import PasswordResetConfirm from "../components/pages/auth/PasswordResetConfirm";
 import UsersComponents from "../components/admin-panel/pages/users/UsersComponents";
 import RoleMiddleware from "../components/middleware/RoleMiddleware";
+import UpdateUserComponents from "../components/admin-panel/pages/users/UpdateUserComponents";
 
 function WebRouter() {
     return (
@@ -25,6 +26,7 @@ function WebRouter() {
 
             <Route element={<RouteMiddleware/>}>
                 <Route path="/admin" element={<DashboardComponents/>}/>
+                <Route path="/update-profile/:id" element={<UpdateUserComponents/>}/>
                 <Route element={<RoleMiddleware/>}>
                     <Route path="/users" element={<UsersComponents/>}/>
                 </Route>
