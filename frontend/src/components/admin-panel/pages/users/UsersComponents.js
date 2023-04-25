@@ -13,6 +13,19 @@ function UsersComponents() {
         setUsers(data);
     }
 
+    const searchUser = (e) => {
+        let keyword = e.target.value;
+        if (keyword) {
+            let filteredUsers = users.filter((user) => {
+                return user.name.toLowerCase().includes(keyword.toLowerCase());
+            });
+            setUsers(filteredUsers);
+        } else {
+            getAllUsers();
+        }
+
+    }
+
     useEffect(() => {
         getAllUsers();
     }, [data]);
@@ -33,9 +46,9 @@ function UsersComponents() {
             <BackendHeader/>
             <BackendAside/>
             <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div className="">
                     <h1 className="h2">Users List</h1>
+                    <input type="text" onChange={searchUser} className="form-control" placeholder="Enter any keywords"/>
                 </div>
                 <div className="row">
                     <div className="col-md-12">

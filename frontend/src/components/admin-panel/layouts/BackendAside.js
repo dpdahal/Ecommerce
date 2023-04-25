@@ -35,13 +35,19 @@ function BackendAside() {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/users'} className="nav-link active" aria-current="page">
+                                <Link to={'/users'} className="nav-link " aria-current="page">
                                     <span data-feather="home" className="align-text-bottom"/>
                                     Users
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={`/update-profile/${data.user._id}`} className="nav-link active"
+                                <Link to={'/manage-category'} className="nav-link" aria-current="page">
+                                    <span data-feather="home" className="align-text-bottom"/>
+                                    Manage Category
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={`/update-profile/${data.user._id}`} className="nav-link"
                                       aria-current="page">
                                     <span data-feather="home" className="align-text-bottom"/>
                                     Update Profile

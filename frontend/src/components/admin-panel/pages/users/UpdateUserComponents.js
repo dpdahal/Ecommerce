@@ -62,7 +62,7 @@ function UpdateUserComponents() {
                     title: 'Success',
                     text: res.success,
                 });
-                window.location.reload();
+
             }
         }).catch((err) => {
             if (err.error) {
