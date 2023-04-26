@@ -46,6 +46,20 @@ function BackendAside() {
                                     Manage Category
                                 </Link>
                             </li>
+
+                            <li className="nav-item">
+                                <Link to={'/add-product'} className="nav-link" aria-current="page">
+                                    <span data-feather="home" className="align-text-bottom"/>
+                                    Add Product
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={'/show-products'} className="nav-link" aria-current="page">
+                                    <span data-feather="home" className="align-text-bottom"/>
+                                    Show Products
+                                </Link>
+                            </li>
+
                             <li className="nav-item">
                                 <Link to={`/update-profile/${data.user._id}`} className="nav-link"
                                       aria-current="page">

@@ -13,6 +13,8 @@ import UsersComponents from "../components/admin-panel/pages/users/UsersComponen
 import RoleMiddleware from "../components/middleware/RoleMiddleware";
 import UpdateUserComponents from "../components/admin-panel/pages/users/UpdateUserComponents";
 import ManageCategory from "../components/admin-panel/pages/category/ManageCategory";
+import AddProduct from "../components/admin-panel/pages/product/AddProduct";
+import ShowProduct from "../components/admin-panel/pages/product/ShowProduct";
 
 function WebRouter() {
     return (
@@ -31,6 +33,9 @@ function WebRouter() {
                 <Route element={<RoleMiddleware/>}>
                     <Route path="/users" element={<UsersComponents/>}/>
                     <Route path="/manage-category" element={<ManageCategory/>}/>
+                    <Route path="/add-product" element={<AddProduct/>}/>
+                    <Route path="/show-products" element={<ShowProduct/>}/>
+
 
                 </Route>
 
