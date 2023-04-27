@@ -51,7 +51,6 @@ function AddProduct() {
                     text: "Product Added Successfully",
                     icon: "success",
                     confirmButtonText: "Ok",
-                    confirmButtonColor: "#f50000",
                 }).then(() => {
                     reset();
                 });

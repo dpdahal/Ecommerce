@@ -15,6 +15,7 @@ import UpdateUserComponents from "../components/admin-panel/pages/users/UpdateUs
 import ManageCategory from "../components/admin-panel/pages/category/ManageCategory";
 import AddProduct from "../components/admin-panel/pages/product/AddProduct";
 import ShowProduct from "../components/admin-panel/pages/product/ShowProduct";
+import ProductDetailsPage from "../components/pages/product/ProductDetailsPage";
 
 function WebRouter() {
     return (
@@ -23,6 +24,8 @@ function WebRouter() {
             <Route path="/about" element={<AboutComponents/>}/>
             <Route path="/login" element={<LoginComponents/>}/>
             <Route path="/register" element={<RegisterComponents/>}/>
+            <Route path="/product-details/:id" element={<ProductDetailsPage/>}/>
+
             <Route path="/password-reset" element={<PasswordReset/>}/>
             <Route path="/reset-confirm/:token" element={<PasswordResetConfirm/>}/>
 

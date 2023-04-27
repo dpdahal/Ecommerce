@@ -1,7 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {useGetLoginCheckQuery} from "../../store/reducers/authSlice";
 
 function FrontendHeader() {
+    let token = localStorage.getItem('token') ?? '';
+    let {data, isLoading} = useGetLoginCheckQuery(token);
+
     return (
         <React.Fragment>
             <div className="top-header">
@@ -15,8 +19,14 @@ function FrontendHeader() {
                         </div>
                         <div className="top-header-right">
                             <ul>
-                                <li><Link to="/login">login</Link></li>
-                                <li><Link to="/register">Register</Link></li>
+                                {data && data.success ? (
+                                    <li><Link to="/admin">Dashboard</Link></li>
+                                ) : (
+                                    <React.Fragment>
+                                        <li><Link to="/login">login</Link></li>
+                                        <li><Link to="/register">Register</Link></li>
+                                    </React.Fragment>
+                                )}
                             </ul>
                         </div>
                     </div>
