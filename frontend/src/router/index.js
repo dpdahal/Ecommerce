@@ -16,6 +16,7 @@ import ManageCategory from "../components/admin-panel/pages/category/ManageCateg
 import AddProduct from "../components/admin-panel/pages/product/AddProduct";
 import ShowProduct from "../components/admin-panel/pages/product/ShowProduct";
 import ProductDetailsPage from "../components/pages/product/ProductDetailsPage";
+import OrderConfirm from "../components/layouts/OrderConfirm";
 
 function WebRouter() {
     return (
@@ -25,6 +26,7 @@ function WebRouter() {
             <Route path="/login" element={<LoginComponents/>}/>
             <Route path="/register" element={<RegisterComponents/>}/>
             <Route path="/product-details/:id" element={<ProductDetailsPage/>}/>
+            <Route path="/order-confirm/:id" element={<OrderConfirm/>}/>
 
             <Route path="/password-reset" element={<PasswordReset/>}/>
             <Route path="/reset-confirm/:token" element={<PasswordResetConfirm/>}/>

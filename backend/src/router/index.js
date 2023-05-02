@@ -3,6 +3,7 @@ import userRouter from "./user.js";
 import authRouter from "./auth.js";
 import cRoute from "./category.js";
 import pRouter from "./product.js";
+import orderRouter from "./order.js";
 
 let webRouter = express.Router();
 
@@ -18,5 +19,6 @@ webRouter.use("/auth", authRouter);
 webRouter.use("/user", userRouter);
 webRouter.use("/category", cRoute);
 webRouter.use("/product", pRouter);
+webRouter.use("/order", orderRouter);
 
 export default webRouter;

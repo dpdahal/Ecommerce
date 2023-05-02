@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
     productId: {
-        type: String,
-        required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -17,6 +17,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         enum: ["pending", "approved", "rejected"],
         default: "pending"
+    },
+    isConfirmed: {
+        type: Boolean,
+        default: false,
     },
     paymentStatus: {
         type: String,

@@ -45,6 +45,7 @@ export const productSliceApi = createApi({
             invalidatesTags: ['Product'],
         }),
 
+
     })
 })
 

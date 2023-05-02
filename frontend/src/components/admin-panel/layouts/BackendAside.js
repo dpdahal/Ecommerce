@@ -14,7 +14,8 @@ function BackendAside() {
                             <div className="d-flex flex-column align-items-center text-center">
                                 {data.user.image ?
                                     <div>
-                                        <img src={data.user.image} width="80" className="rounded-circle" alt="image not found"/>
+                                        <img src={data.user.image} width="80" className="rounded-circle"
+                                             alt="image not found"/>
                                     </div> :
                                     <div>
                                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
@@ -34,31 +35,36 @@ function BackendAside() {
                                     Dashboard
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to={'/users'} className="nav-link " aria-current="page">
-                                    <span data-feather="home" className="align-text-bottom"/>
-                                    Users
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/manage-category'} className="nav-link" aria-current="page">
-                                    <span data-feather="home" className="align-text-bottom"/>
-                                    Manage Category
-                                </Link>
-                            </li>
 
-                            <li className="nav-item">
-                                <Link to={'/add-product'} className="nav-link" aria-current="page">
-                                    <span data-feather="home" className="align-text-bottom"/>
-                                    Add Product
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/show-products'} className="nav-link" aria-current="page">
-                                    <span data-feather="home" className="align-text-bottom"/>
-                                    Show Products
-                                </Link>
-                            </li>
+                            {data.user.role === 'admin' ?
+                                <div>
+                                    <li className="nav-item">
+                                        <Link to={'/users'} className="nav-link " aria-current="page">
+                                            <span data-feather="home" className="align-text-bottom"/>
+                                            Users
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to={'/manage-category'} className="nav-link" aria-current="page">
+                                            <span data-feather="home" className="align-text-bottom"/>
+                                            Manage Category
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to={'/add-product'} className="nav-link" aria-current="page">
+                                            <span data-feather="home" className="align-text-bottom"/>
+                                            Add Product
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to={'/show-products'} className="nav-link" aria-current="page">
+                                            <span data-feather="home" className="align-text-bottom"/>
+                                            Show Products
+                                        </Link>
+                                    </li>
+                                </div>
+                                : ""}
+
 
                             <li className="nav-item">
                                 <Link to={`/update-profile/${data.user._id}`} className="nav-link"
