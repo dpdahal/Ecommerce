@@ -1,10 +1,11 @@
 import React, {useEffect} from "react";
 import BackendHeader from "../../layouts/BackendHeader";
 import BackendAside from "../../layouts/BackendAside";
-import {useGetAllProductsQuery} from "../../../../store/reducers/productSlice";
+import {usePaginateProductsQuery} from "../../../../store/reducers/productSlice";
+import Pagination from "../../layouts/Pagination";
 
 function ShowProduct() {
-    const {data, error, isLoading} = useGetAllProductsQuery();
+    const {data, error, isLoading} = usePaginateProductsQuery(1, 10);
 
     if (isLoading) {
         return (
@@ -63,6 +64,9 @@ function ShowProduct() {
                             </tbody>
                         </table>
 
+                    </div>
+                    <div className="col-md-12">
+                        <Pagination/>
                     </div>
                 </div>
 

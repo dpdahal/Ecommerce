@@ -1,14 +1,36 @@
 import Orders from "../models/Orders.js";
+import Auth from "../middleware/Auth.js";
+import User from "../models/User.js";
 
 class OrderController {
 
     async index(req, res) {
-        try {
-            let orders = await Orders.find();
-            res.status(200).json({message: "All orders", orders});
-        } catch (error) {
-            res.status(500).json({message: "Orders not found", error});
+        const token = req.headers.authorization;
+        if (token) {
+            let response = Auth.verifyToken(token);
+            if (response) {
+                let userId = response.id;
+                const users = await User.findById(userId);
+                if(users.role === 'admin'){
+                    const orders = await Orders.find({}).populate('productId').populate('userId');
+                    return res.json(orders);
+                }else{
+                    const orders = await Orders.find({userId: userId}).populate('productId').populate('userId');
+                    return res.json(orders);
+                }
+            } else {
+                res.status(200).json({
+                    error: "Token is not valid"
+                });
+            }
+
+
+        } else {
+            res.status(200).json({
+                error: "No token found"
+            });
         }
+
     }
 
     async store(req, res) {

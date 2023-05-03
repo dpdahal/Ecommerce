@@ -6,9 +6,12 @@ export const orderSliceApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/'}),
     endpoints: (builder) => ({
         getAllOrders: builder.query({
-            query: () => ({
+            query: (token) => ({
                 url: '/order',
                 method: 'GET',
+                headers: {
+                    authorization: token,
+                }
             }),
             providesTags: ['Order'],
         }),

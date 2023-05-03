@@ -17,6 +17,7 @@ import AddProduct from "../components/admin-panel/pages/product/AddProduct";
 import ShowProduct from "../components/admin-panel/pages/product/ShowProduct";
 import ProductDetailsPage from "../components/pages/product/ProductDetailsPage";
 import OrderConfirm from "../components/layouts/OrderConfirm";
+import OrderList from "../components/admin-panel/pages/product/OrderList";
 
 function WebRouter() {
     return (
@@ -35,6 +36,9 @@ function WebRouter() {
             <Route element={<RouteMiddleware/>}>
                 <Route path="/admin" element={<DashboardComponents/>}/>
                 <Route path="/update-profile/:id" element={<UpdateUserComponents/>}/>
+                <Route path="/order-list/" element={<OrderList/>}/>
+
+
                 <Route element={<RoleMiddleware/>}>
                     <Route path="/users" element={<UsersComponents/>}/>
                     <Route path="/manage-category" element={<ManageCategory/>}/>

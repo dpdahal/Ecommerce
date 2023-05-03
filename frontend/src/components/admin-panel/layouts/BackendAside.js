@@ -67,6 +67,14 @@ function BackendAside() {
 
 
                             <li className="nav-item">
+                                <Link to="/order-list" className="nav-link"
+                                      aria-current="page">
+                                    <span data-feather="home" className="align-text-bottom"/>
+                                    Order list
+                                </Link>
+                            </li>
+
+                            <li className="nav-item">
                                 <Link to={`/update-profile/${data.user._id}`} className="nav-link"
                                       aria-current="page">
                                     <span data-feather="home" className="align-text-bottom"/>
