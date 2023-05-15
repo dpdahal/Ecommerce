@@ -51,6 +51,7 @@ class UserController {
             if (errorType.username || errorType.email) {
                 return res.status(200).json({error: errorType});
             }
+        
             const user = await User.create({...req.body, image: imageName});
             return res.status(200).json({success: 'User created successfully'});
         } catch (e) {
