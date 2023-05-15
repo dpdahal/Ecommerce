@@ -14,6 +14,6 @@ let pRouter = express.Router();
 pRouter.get("/", pInstance.index);
 pRouter.get("/:id", pInstance.show);
 pRouter.post("/", upload.array('images', 100), pInstance.store);
-pRouter.get("/paginate/:page/:perPage", pInstance.paginate);
+pRouter.get("/paginate/:page", pInstance.paginate);
 
 export default pRouter;

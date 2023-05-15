@@ -8,6 +8,8 @@ import {Link} from "react-router-dom";
 function HomeComponents() {
     const {data, error, isLoading} = useGetAllProductsQuery();
 
+    console.log(document.cookie);
+
     if (isLoading) {
         return (
             <React.Fragment>

@@ -56,26 +56,21 @@ class ProductController {
 
     async paginate(req, res) {
 
-        console.log(req.params);
-        let page = req.params.page ? req.params.page : 1;
-        let perPage = req.params.perPage ? req.params.perPage : 5;
-        console.log(page, perPage);
-
-    //     let allProducts = await Product.find({}).populate('categoryId');
-    //     let products = await Product.find({}).populate('categoryId').skip((page - 1) * perPage).limit(perPage);
-    //     products = products.map(product => {
-    //         if (product.images.length > 0) {
-    //             product.images = product.images.map(image => {
-    //                 return `${process.env.BASE_URL}/uploads/products/${image}`;
-    //             });
-    //             return product;
-    //         } else {
-    //             product.images = [`${process.env.BASE_URL}/uploads/icons/not-found.png`];
-    //             return product;
-    //         }
-    //     });
-    //     console.log(products);
-    //     res.status(200).json({products: products, totalProducts: allProducts.length});
+        let {page, perPage} = JSON.parse(req.params.page);
+        let allProducts = await Product.find({}).populate('categoryId');
+        let products = await Product.find({}).populate('categoryId').skip((page - 1) * perPage).limit(perPage);
+        products = products.map(product => {
+            if (product.images.length > 0) {
+                product.images = product.images.map(image => {
+                    return `${process.env.BASE_URL}/uploads/products/${image}`;
+                });
+                return product;
+            } else {
+                product.images = [`${process.env.BASE_URL}/uploads/icons/not-found.png`];
+                return product;
+            }
+        });
+        res.status(200).json({products: products, totalProducts: allProducts.length});
     }
 }
 

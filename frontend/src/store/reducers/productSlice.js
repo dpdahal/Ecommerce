@@ -46,7 +46,8 @@ export const productSliceApi = createApi({
         }),
         paginateProducts: builder.query({
             query: (arg) => ({
-                url: `/product/paginate/${arg.page}/${arg.perPage}`,
+                method: 'GET',
+                url: `/product/paginate/${arg}`,
             }),
             providesTags: ['Product'],
         }),

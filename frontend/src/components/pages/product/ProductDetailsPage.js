@@ -35,6 +35,10 @@ function ProductDetailsPage() {
         )
     }
 
+    // set cookie
+    document.cookie = `category=${data.categoryId.name}; path=/; expires=Thu, 18 Dec 2023 12:00:00 UTC;`
+
+
     return (
         <React.Fragment>
             <FrontendHeader/>
