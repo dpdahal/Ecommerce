@@ -5,24 +5,47 @@ import FrontendFooter from "./FrontendFooter";
 import {useParams} from "react-router-dom";
 import {useGetOrderByIdQuery, useConfirmOrderMutation} from "../../store/reducers/orderSlice";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function OrderConfirm() {
     let params = useParams();
     let {data, isLoading, isError, error} = useGetOrderByIdQuery(params.id);
     let [confirmNow, {isSuccess}] = useConfirmOrderMutation();
 
-    let productOrderConfirm = (id, type) => {
-        let data = {id, type};
-        confirmNow(data).then((res) => {
-            if (res.data.message === "cancelled") {
-                Swal.fire("Success", "Order Cancelled", "success");
-                window.location.href = "/";
+    let productOrderConfirm = async (id, type) => {
+
+        const data = {
+            return_url: "http://localhost:3000/",
+            website_url: "http://localhost:3000",
+            amount: 1000,
+            purchase_order_id: "test123",
+            purchase_order_name: "test",
+        };
+
+        axios.post('https://a.khalti.com/api/v2/epayment/initiate/', data, {
+            headers: {
+                'Authorization': 'Key test_secret_key_9b0b9b5b0b9b4b9b9b0b9b4b9b9b0b9b',
+                'Content-Type': 'application/json'
             }
-            if (res.data.message === "confirmed") {
-                Swal.fire("Success", "Order Confirmed", "success");
-                window.location.href = "/";
-            }
-        });
+        })
+            .then(response => {
+                const paymentURL = response.data.payment_url;
+                let data = {id, type};
+                confirmNow(data).then((res) => {
+                    if (res.data.message === "cancelled") {
+                        Swal.fire("Success", "Order Cancelled", "success");
+                        window.location.href = "/";
+                    }
+                    if (res.data.message === "confirmed") {
+                        window.location.replace(paymentURL);
+                    }
+                });
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
     }
 
     if (isLoading) {
