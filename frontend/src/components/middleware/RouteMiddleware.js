@@ -1,5 +1,6 @@
 import {Outlet} from "react-router-dom";
 import {useGetLoginCheckQuery} from "../../store/reducers/authSlice";
+import "../../scss/style.css";
 
 function RouteMiddleware() {
     let token = localStorage.getItem('token') ?? '';
